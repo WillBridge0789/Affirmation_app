@@ -1,49 +1,48 @@
-const { useState, useEffect } = require("react");
 
-function shuffleAffirmations(array) {
-  const shuffledAffirmations = [...array];
-  for (let i = shuffledAffirmations.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffledAffirmations[i], shuffledAffirmations[j]] = [
-      shuffledAffirmations[j],
-      shuffledAffirmations[i],
-    ];
-  }
-  return shuffledAffirmations;
-}
+import { useEffect, useState } from "react";
 
 function Affirm() {
-  const [affirmations, setAffirmations] = useState([]);
-  const [currentAffirmationIndex, setCurrentAffirmationIndex] = useState(0);
+  const [quotes, setQuotes] = useState([]);
+  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
 
   useEffect(() => {
+    // Make the API request when the component mounts
     fetch("https://type.fit/api/quotes")
-      .then(function (response) {
-        return response.json();
+      .then((response) => response.json())
+      .then((data) => {
+        setQuotes(data);
       })
-      .then(function (data) {
-        const shuffleData = shuffleAffirmations(data);
-        setAffirmations(shuffleData);
+      .catch((error) => {
+        console.error(error);
       });
   }, []);
 
-  const nextAffirmation = () => {
-    setCurrentAffirmationIndex(
-      (prevIndex) => (prevIndex + 1) % affirmations.length
-    );
-  };
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentQuoteIndex((prevIndex) =>
+        prevIndex < quotes.length - 1 ? prevIndex + 1 : 0
+      );
+    }, 5000); // Change the time interval as needed (e.g., every 5 seconds)
+
+    return () => {
+      clearInterval(timer); // Clear the timer when the component unmounts
+    };
+  }, [quotes]);
 
   return (
     <div className="container">
-      <div className="row d-flex justify-content-center m-3">
-        <h1 className="d-flex justify-content-center">For Today:</h1>
+      <div className="row d-flex justify-content-center">
+        <div className="col d-flex align-items-center">
+          <h1>For Today:</h1>
+        </div>
       </div>
-      <div className="row d-flex justify-content-center m-3">
-        {/* {affirmations.map((affirmation, index) => (
-                <h2 key={index}>{affirmation.text}</h2>
-              ))} */}
-        <p className="d-flex justify-content-center">{affirmations[currentAffirmationIndex]?.text}</p>
-        <button onClick={nextAffirmation}>Next Affirmation</button>
+      <div className="row d-flex justify-content-center">
+        {quotes.length > 0 && (
+          <div className="col d-flex align-items-center">
+            <p>"{quotes[currentQuoteIndex].text}" </p>
+            <p>- {quotes[currentQuoteIndex].author}</p>
+          </div>
+        )}
       </div>
     </div>
   );
