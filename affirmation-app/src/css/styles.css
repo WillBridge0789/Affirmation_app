@@ -3,3 +3,9 @@
 #home-title {
     font-family: Righteous, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+
+.calm-imgs {
+    height: 275px;
+    width: 325px;
+    border-radius: 50%;
+}

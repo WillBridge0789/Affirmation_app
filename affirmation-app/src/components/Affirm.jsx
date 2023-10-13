@@ -37,16 +37,15 @@ function Affirm() {
   return (
     <div className="container" data-aos="fade-left" data-aos-delay="1500">
       <div className="row d-flex justify-content-center">
-        <div className="col d-flex align-items-center">
-          <h1 id="quote-title">For Today:</h1>
-        </div>
-      </div>
-      <div className="row d-flex justify-content-center">
         {quotes.length > 0 && (
-          <div className="col d-flex align-items-center">
-            <p className="quote">"{quotes[currentQuoteIndex].text}" </p>
-            <p className="quote">- {quotes[currentQuoteIndex].author}</p>
-          </div>
+          <>
+            <p className="quote d-flex justify-content-center">
+              "{quotes[currentQuoteIndex].text}"{" "}
+            </p>
+            <p className="quote d-flex justify-content-center">
+              - {quotes[currentQuoteIndex].author}
+            </p>
+          </>
         )}
       </div>
     </div>
