@@ -1,5 +1,6 @@
-
 import { useEffect, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function Affirm() {
   const [quotes, setQuotes] = useState([]);
@@ -29,18 +30,22 @@ function Affirm() {
     };
   }, [quotes]);
 
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
-    <div className="container">
+    <div className="container" data-aos="fade-left" data-aos-delay="1500">
       <div className="row d-flex justify-content-center">
         <div className="col d-flex align-items-center">
-          <h1>For Today:</h1>
+          <h1 id="quote-title">For Today:</h1>
         </div>
       </div>
       <div className="row d-flex justify-content-center">
         {quotes.length > 0 && (
           <div className="col d-flex align-items-center">
-            <p>"{quotes[currentQuoteIndex].text}" </p>
-            <p>- {quotes[currentQuoteIndex].author}</p>
+            <p className="quote">"{quotes[currentQuoteIndex].text}" </p>
+            <p className="quote">- {quotes[currentQuoteIndex].author}</p>
           </div>
         )}
       </div>
