@@ -23,7 +23,7 @@ function Affirm() {
       setCurrentQuoteIndex((prevIndex) =>
         prevIndex < quotes.length - 1 ? prevIndex + 1 : 0
       );
-    }, 5000); // Change the time interval as needed (e.g., every 5 seconds)
+    }, 10000); // Change the time interval as needed (e.g., every 5 seconds)
 
     return () => {
       clearInterval(timer); // Clear the timer when the component unmounts
@@ -35,7 +35,11 @@ function Affirm() {
   }, []);
 
   return (
-    <div className="container" data-aos="fade-left" data-aos-delay="1500">
+    <div
+      className="container mt-4 mb-4 p-3"
+      data-aos="fade-left"
+      data-aos-delay="1500"
+    >
       <div className="row d-flex justify-content-center">
         {quotes.length > 0 && (
           <>
