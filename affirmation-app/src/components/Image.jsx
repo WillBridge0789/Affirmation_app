@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function Image() {
   // Create an array of image file names
@@ -26,7 +28,7 @@ function Image() {
     // Set up an interval to change the image every 5 seconds
     const interval = setInterval(() => {
       setCurrentImage(getRandomImage());
-    }, 5000); // 5000 milliseconds (5 seconds)
+    }, 10000); // 10000 milliseconds (10 seconds)
 
     return () => {
       // Clear the interval when the component unmounts
@@ -34,11 +36,21 @@ function Image() {
     };
   }, []);
 
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
-    <div className="container d-flex justify-content-center">
+    <div
+      className="container d-flex justify-content-center mt-4 mb-4"
+      id="img-display"
+    >
       <div className="row d-flex justify-content-center">
         {currentImage && (
           <img
+            data-aos="fade-zoom-in"
+            data-aos-easing="ease-in-back"
+            data-aos-delay="300"
             src={require(`/public/img/${currentImage}`)} // Assuming images are in a folder called 'images'
             alt="Random Calm Display"
             className="calm-imgs"
