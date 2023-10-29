@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import AOS from "aos";
+// import "./css/styles.css";
 import "aos/dist/aos.css";
 
 function Affirm() {
