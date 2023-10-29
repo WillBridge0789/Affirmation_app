@@ -5,25 +5,29 @@
 }
 
 #img-display {
-    padding: 0;
+    height: 275px;
 }
 
 .calm-imgs {
     height: 275px;
-    width: 325px;
     /* border-radius: 10%; */
-    box-shadow: 5px 5px 5px lightgrey;
+    box-shadow: 5px 5px 10px black;
 }
 
+/* .row {
+  padding: 0;
+  margin: 0;
+} */
+
 #main-app {
-    background: linear-gradient(to top, 
-    lightgrey,
-    violet,
-    indigo, 
-  );
-  background-size: 100% 100%;
+  background: linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
+            linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
+            linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);
+  background-size: cover;
   background-repeat: no-repeat;
   /* background-attachment: fixed; */
+  padding: 0;
+  margin: 0;
 }
 
 /* @media (max-width: 767px) {

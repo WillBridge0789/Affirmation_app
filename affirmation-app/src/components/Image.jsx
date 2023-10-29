@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+// import "./css/styles.css";
 
 function Image() {
   // Create an array of image file names
@@ -42,7 +43,7 @@ function Image() {
 
   return (
     <div
-      className="container d-flex justify-content-center mt-4 mb-4"
+      className="container d-flex justify-content-center p-0 mt-4 mb-4"
       id="img-display"
     >
       <div className="row d-flex justify-content-center">
@@ -50,7 +51,7 @@ function Image() {
           <img
             data-aos="fade-zoom-in"
             data-aos-easing="ease-in-back"
-            data-aos-delay="300"
+            data-aos-delay="1250"
             src={require(`/public/img/${currentImage}`)} // Assuming images are in a folder called 'images'
             alt="Random Calm Display"
             className="calm-imgs"
