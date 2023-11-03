@@ -37,7 +37,8 @@ function Affirm() {
 
   return (
     <div
-      className="container mt-4 mb-4 p-3"
+      className="container m-4 p-3"
+      id="quotes-and-authors"
       data-aos="fade-left"
       data-aos-delay="1500"
     >
